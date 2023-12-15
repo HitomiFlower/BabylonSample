@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>3D Cube Animate</title>
+    <title>3D 立方体旋转</title>
     <style>
         #cubeCanvas {
             width: 400px;
@@ -10,11 +10,11 @@
     </style>
 </head>
 <body>
-    <h2>Input Cube length of edge</h2>
+    <h2>输入一个数字绘制3D立方体</h2>
     <form id="cubeForm">
-        <label for="size">Length:</label>
+        <label for="size">边长:</label>
         <input type="number" id="size" name="size" min="1" max="10"><br><br>
-        <input type="button" value="Draw" onclick="drawCube()">
+        <input type="button" value="绘制立方体" onclick="drawCube()">
     </form>
     <div id="cubeCanvas"></div>
 
@@ -55,7 +55,6 @@
         }
 
         function animate() {
-            requestAnimationFrame(animate);
 
             // 更新立方体的旋转
             cube.rotation.x += 0.01;
@@ -65,7 +64,7 @@
             // 渲染场景
             renderer.render(scene, camera);
         }
-
+        setInterval(animate, 16);
         init3D(); // 初始化3D场景
     </script>
 </body>
