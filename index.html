@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>3D 立方体旋转</title>
+    <title>3D 立方体/Local three.js</title>
     <style>
         #cubeCanvas {
             width: 400px;
@@ -39,9 +39,6 @@
             scene.add(cube);
 
             camera.position.z = 5;
-
-            // 开始动画循环
-            animate();
         }
 
         function drawCube() {
@@ -52,19 +49,11 @@
 
             // 调整摄像机位置以适应立方体的尺寸
             camera.position.z = 3 * size;
-        }
-
-        function animate() {
-
-            // 更新立方体的旋转
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            cube.rotation.z += 0.01;
 
             // 渲染场景
             renderer.render(scene, camera);
         }
-        setInterval(animate, 16);
+
         init3D(); // 初始化3D场景
     </script>
 </body>
