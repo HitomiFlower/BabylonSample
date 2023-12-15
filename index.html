@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>3D 立方体/Local three.js</title>
+    <title>3D Cube/Local three.js</title>
     <style>
         #cubeCanvas {
             width: 400px;
@@ -10,29 +10,27 @@
     </style>
 </head>
 <body>
-    <h2>输入一个数字绘制3D立方体</h2>
+    <h2>Input Number</h2>
     <form id="cubeForm">
-        <label for="size">边长:</label>
+        <label for="size">Length:</label>
         <input type="number" id="size" name="size" min="1" max="10"><br><br>
         <input type="button" value="绘制立方体" onclick="drawCube()">
     </form>
     <div id="cubeCanvas"></div>
 
-    <!-- 引入 Three.js 库 -->
+    <!-- Import Three.js 库 -->
     <script src="src/three.min.js"></script>
 
     <script>
         var scene, camera, renderer, cube;
 
         function init3D() {
-            // 创建场景、相机和渲染器
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
             renderer = new THREE.WebGLRenderer();
             renderer.setSize(400, 400);
             document.getElementById('cubeCanvas').appendChild(renderer.domElement);
 
-            // 创建一个立方体
             var geometry = new THREE.BoxGeometry(1, 1, 1);
             var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
             cube = new THREE.Mesh(geometry, material);
@@ -44,13 +42,10 @@
         function drawCube() {
             var size = document.getElementById('size').value;
 
-            // 更新立方体的尺寸
             cube.scale.set(size, size, size);
 
-            // 调整摄像机位置以适应立方体的尺寸
             camera.position.z = 3 * size;
 
-            // 渲染场景
             renderer.render(scene, camera);
         }
 
